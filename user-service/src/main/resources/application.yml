@@ -13,3 +13,26 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 user.greeting: Hello Cloud
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /admin
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  info:
+    git:
+      mode: full
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
