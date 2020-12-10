@@ -13,6 +13,7 @@ spring:
           uri: https://github.com/anishpanthi/config-repo
           clone-on-start: true
           default-label: main
+          search-paths: user,account
 server:
   port: 9090
 management:
