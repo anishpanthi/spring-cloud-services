@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    config:
+      discovery:
+        enabled: true
+      server:
+        git:
+          uri: https://github.com/anishpanthi/config-repo
+          clone-on-start: true
+          default-label: main
+server:
+  port: 9090
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /admin
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  info:
+    git:
+      mode: full
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
