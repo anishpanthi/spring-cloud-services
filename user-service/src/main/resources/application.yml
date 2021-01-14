@@ -6,7 +6,7 @@ spring:
       ribbon:
         enabled: false
 server:
-  port: 0
+  port: 9093
 eureka:
   client:
     service-url:

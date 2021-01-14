@@ -10,12 +10,20 @@ spring:
           - Path=/us-api/**
         filters:
           - RewritePath=/us-api(?<segment>/?.*), $\{segment}
+          - name: RequestRateLimiter
+            args:
+              redis-rate-limiter.replenishRate: 5
+              redis-rate-limiter.burstCapacity: 10
       - id: account-service
         uri: lb://account-service
         predicates:
-          - Path=/us-api/**
+          - Path=/as-api/**
         filters:
           - RewritePath=/as-api(?<segment>/?.*), $\{segment}
+#          - name: RequestRateLimiter
+#            args:
+#              redis-rate-limiter.replenishRate: 5
+#              redis-rate-limiter.burstCapacity: 10
       enabled: true
       discovery:
         locator:
@@ -24,6 +32,9 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
+  redis:
+    host: 127.0.0.1
+    port: 6379
 server:
   port: 8080
 eureka:
