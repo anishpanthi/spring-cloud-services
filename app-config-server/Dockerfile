@@ -1,6 +1,5 @@
 FROM openjdk:15
 WORKDIR /opt
-ENV PORT 8080
-EXPOSE 8080
+EXPOSE 9090
 COPY build/libs/*.jar /opt/config-server.jar
-ENTRYPOINT exec java $JAVA_OPTS -jar config-server.jar
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar config-server.jar" ]

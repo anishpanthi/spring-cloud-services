@@ -15,7 +15,7 @@ spring:
           default-label: main
           search-paths: user,account
 server:
-  port: 9090
+  port: 9091
 management:
   endpoints:
     web:
@@ -38,3 +38,9 @@ management:
         enabled: true
     tags:
       application: ${spring.application.name}
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
