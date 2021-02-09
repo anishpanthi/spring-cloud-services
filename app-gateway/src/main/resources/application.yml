@@ -12,8 +12,8 @@ spring:
           - RewritePath=/us-api(?<segment>/?.*), $\{segment}
           - name: RequestRateLimiter
             args:
-              redis-rate-limiter.replenishRate: 5
-              redis-rate-limiter.burstCapacity: 10
+              redis-rate-limiter.replenishRate: 2
+              redis-rate-limiter.burstCapacity: 5
       - id: account-service
         uri: lb://account-service
         predicates:
